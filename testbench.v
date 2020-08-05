@@ -8,7 +8,7 @@ module tb();
   end
   always
     #50 clk = !clk;
-  datapath datapath(clk, output_data, hit_number);
+  datapath datapath(clk, output_data);
   // initial begin
   //  rst =  1;
   //  #120
