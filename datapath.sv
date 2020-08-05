@@ -10,10 +10,10 @@ module datapath(input clk, output reg [31:0] output_data, hit_number);
   wire [31:0] cache_data_out;
   wire hit;
   assign output_data = cache_data_out;
-  array array (address, clk);
-  address_decoder address_decoder (address, tag, index, word_offset, prime_address);
-  main_memory main_memory (prime_address, memory_out);
-  cache cache (address, clk, memory_out, tag, index, word_offset, cache_data_out,hit);
+  array array (clk, address);
+  AddressDecoder AddressDecoder (address, tag, index, word_offset, prime_address);
+  mainmem mainmem (prime_address, memory_out);
+  cache cache (clk, memory_out, tag, index, word_offset, cache_data_out,hit);
   always@(posedge clk)
     if(hit) hit_number <= hit_number + 1'd1;
 endmodule

@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-module cache(input[12:0] address, input clk,
+module cache(input clk,
         input [127:0] MM_data,
         input [2:0] tag,
         input [9:0] index,
