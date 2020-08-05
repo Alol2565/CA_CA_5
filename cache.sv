@@ -23,17 +23,17 @@ module cache(input clk,
           line[1] = cache_data[index][95:64];
           line[2] = cache_data[index][63:32];
           line[3] = cache_data[index][31:0];
-          
+          cache_data_out = line[word_offset];
       end
       else begin
         hit = 1'b0;
         cache_data[index] = {1'b1, tag, MM_data};
-	    line[0] = cache_data[index][127:96];
-	    line[1] = cache_data[index][95:64];
-	    line[2] = cache_data[index][63:32];
-	    line[3] = cache_data[index][31:0];
-	    cache_data_out = line[word_offset];
-	    $writememb("cache.data", cache_data);
+	      line[0] = cache_data[index][127:96];
+	      line[1] = cache_data[index][95:64];
+	      line[2] = cache_data[index][63:32];
+	      line[3] = cache_data[index][31:0];
+	      cache_data_out = line[word_offset];
+	      $writememb("cache.data", cache_data);
       end
   end
 endmodule
