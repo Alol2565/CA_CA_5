@@ -4,12 +4,12 @@ module cache(input[12:0] address, input clk, rst,
         input [2:0] tag,
         input [12:0] index,
         input [1:0] word_offset,        
-        output reg [31:0] cache_data_out);
+         output reg [31:0] cache_data_out
+         output reg hit);
 //4 word per line + 4 tag
   reg [131:0] cache_data [1023:0];
   reg [31:0] line [3:0];
   reg valid;
-  reg hit;
   reg [2:0 ]cache_tag;
   initial begin
    $readmemb ("cache.data", cache_data);
