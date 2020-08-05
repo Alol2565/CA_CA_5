@@ -1,10 +1,10 @@
 `timescale 1ns/1ns
-module cache(input[12:0] address, input clk, rst,
+module cache(input[12:0] address, input clk,
         input [127:0] MM_data,
         input [2:0] tag,
-        input [12:0] index,
+        input [9:0] index,
         input [1:0] word_offset,        
-         output reg [31:0] cache_data_out
+         output reg [31:0] cache_data_out,
          output reg hit);
 //4 word per line + 4 tag
   reg [131:0] cache_data [1023:0];

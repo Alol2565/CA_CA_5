@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-module mainmem(input[12:0] address, input clk,rst, output reg [127:0] memory_out);
+module mainmem(input[12:0] address, output reg [127:0] memory_out);
   reg [31:0] memory_data [32767:0];
   initial
   begin
