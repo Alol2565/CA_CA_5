@@ -11,7 +11,6 @@ module datapath(input clk, output reg [31:0] output_data);
   wire hit;
   integer hit_number = 0;
   integer access_number = 0;
-  integer hit_rate = 0;
   assign output_data = cache_data_out;
   array array (clk, address);
   AddressDecoder AddressDecoder (address, tag, index, word_offset, prime_address);
@@ -19,6 +18,6 @@ module datapath(input clk, output reg [31:0] output_data);
   cache cache (clk, memory_out, tag, index, word_offset, cache_data_out,hit);
   always@(negedge clk) begin
     if(hit) hit_number = hit_number + 1;
-    if (access_number < 8192) access_number = access_number + 1;
+    if(access_number < 8192) access_number = access_number + 1;
   end
 endmodule

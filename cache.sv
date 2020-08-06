@@ -4,9 +4,9 @@ module cache(input clk,
         input [2:0] tag,
         input [9:0] index,
         input [1:0] word_offset,        
-         output reg [31:0] cache_data_out,
-         output reg hit);
-//4 word per line + 4 tag
+        output reg [31:0] cache_data_out,
+        output reg hit);
+//4 word per line + 3 tag + 1 valid bit
   reg [131:0] cache_data [1023:0];
   reg [31:0] line [3:0];
   reg valid;
@@ -14,7 +14,7 @@ module cache(input clk,
   initial begin
    $readmemb ("cache.data", cache_data);
   end
-  always@(tag, index, word_offset) begin
+  always@(posedge clk,tag, index, word_offset) begin
       valid = cache_data[index][131];
       cache_tag = cache_data[index][130:128];
       if(valid == 1'b1 & cache_tag == tag) begin

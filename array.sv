@@ -1,5 +1,4 @@
 `timescale 1ns/1ns
-
 module array(clk, address);
     output reg [14:0] address;
     input clk;
