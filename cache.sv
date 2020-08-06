@@ -14,7 +14,7 @@ module cache(input clk,
   initial begin
    $readmemb ("cache.data", cache_data);
   end
-  always@(posedge clk,tag, index, word_offset) begin
+  always@(tag, index, word_offset) begin
       valid = cache_data[index][131];
       cache_tag = cache_data[index][130:128];
       if(valid == 1'b1 & cache_tag == tag) begin
